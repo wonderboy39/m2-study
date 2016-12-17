@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test_delete">
+  <delete id="delete_one" parameterType="hashmap">
+  	DELETE FROM members WHERE id=#{id}
+  </delete>
+  
+  
+  <update id="update_one" parameterType="hashmap">
+  	UPDATE members SET id=#{id}, pw=#{pw} WHERE id=#{orign_id}
+  </update>
+</mapper>
