@@ -1,0 +1,7 @@
+CREATE TABLE members_miracle(
+  seq	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id	VARCHAR(10),
+  pw	VARCHAR(10),
+  email VARCHAR(50),
+  name	VARCHAR(30)
+);
