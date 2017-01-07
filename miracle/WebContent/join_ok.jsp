@@ -9,6 +9,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.content{
+	width:300px;
+	heiht:300px;
+	margin: 0 auto;
+}
+img{
+	width:300px;
+	height:300px;
+}
+</style>
 </head>
 <body>
 <% 
@@ -25,11 +36,18 @@
 	member_info.put("email", mail);
 	member_info.put("name", name);
 	int result = sql_session.insert("insert_member", member_info); 
+	/* result = -1; */
 	sql_session.close();
 	if(result>0){%>
-	<h1> 회원가입 성공 </h1>
+	<div class="content">
+		<h1> You're Registered Successfully. </h1>
+		<img src="success.jpg"/>
+	</div>
 <%}else{%>
-	<h1> 회원가입 실패 </h1>
+	<div class="content">
+		<h1> Sorry, Try again.</h1>
+		<img src="try_again.jpg"/>
+	</div>
 <%}
 %>
 </body>
