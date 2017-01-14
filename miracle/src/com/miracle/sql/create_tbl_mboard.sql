@@ -1,0 +1,8 @@
+CREATE TABLE MBOARD1(
+	seq INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	subject	VARCHAR(30),
+	content	VARCHAR(500),
+	writer	VARCHAR(20),
+	filename VARCHAR(60),
+	password VARCHAR(20)
+);

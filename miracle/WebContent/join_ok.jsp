@@ -28,8 +28,11 @@ img{
 	String pw = request.getParameter("pw");
 	String mail = request.getParameter("email");
 	String name = request.getParameter("name");
+	DBService dbService = DBService.getInstance();
 	
-	SqlSession sql_session = DBService.getInstance().getFactory().openSession(true);
+	/* SqlSession sql_session = DBService.getInstance().getFactory().openSession(true); */
+	dbService.setResource("member");
+	SqlSession sql_session = dbService.getFactory().openSession(true);
 	Map<String, String> member_info = new HashMap<String, String>();
 	member_info.put("id", id);
 	member_info.put("pw", pw);
