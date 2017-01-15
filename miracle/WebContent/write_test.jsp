@@ -44,7 +44,6 @@
 		
 </style>
 <script type="text/javascript">
-  
 	function sendData(){
 		// 유효성 검사
 		for(var i=0 ; i<document.forms[0].elements.length ; i++){
