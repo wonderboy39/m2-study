@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> Bootstrap Write Form </title>
-<link rel="styleshhet" content="css/bootstrap.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -44,7 +43,7 @@
 				<td><input type="text" name="subject" placeholder="제목을 입력하세요. " class="form-control"/></td>
 			</tr>
 			<tr>
-				<th>이름 : </th>
+				<th>작성자 : </th>
 				<td><input type="text" name="name" placeholder="이름을 입력하세요. " class="form-control"></td>
 			</tr>
 			<tr>

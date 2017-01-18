@@ -46,10 +46,10 @@ img{
 	}else{
 		bvo.setFilename("");
 	}
-	System.out.println("bvo == " + bvo.getFilename());
+//	System.out.println("bvo == " + bvo.getFilename());
 	dbService.setResource("board");
 	SqlSession sql_session = dbService.getFactory().openSession(true);
-	System.out.println("1");
+//	System.out.println("1");
 	int result = sql_session.insert("insert_post",bvo);
 	if(result>0){%>
 		<div class="content">
