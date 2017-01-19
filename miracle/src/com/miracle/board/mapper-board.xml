@@ -9,7 +9,10 @@
   	INSERT INTO MBOARD1(subject, content, writer, filename, password) VALUES (#{subject}, #{content}, #{writer}, #{filename}, #{password})
   </insert>
   
-  <select id="list" parameterType="java.util.Map" resultType="com.miracle.board.BoardVO">
+  <!-- <select id="view_all_post_normal" parameterType="java.util.List" resultType="com.miracle.board.BoardVO">
+  	SELECT * FROM MBOARD1 order by seq desc 
+  </select> -->
+  <select id="readAll" resultType="com.miracle.board.BoardVO">
   	SELECT * FROM MBOARD1 order by seq desc 
   </select>
 </mapper>
