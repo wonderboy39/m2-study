@@ -26,15 +26,14 @@
 	DBService dbService = DBService.getInstance();
 	dbService.setResource("board");
 	SqlSession sqlSession = dbService.getFactory().openSession(true);
-//	System.out.println("opened session successfully");
-//	List<BoardVO> resultList = sqlSession.selectList("view_all_post_normal");
 	List<BoardVO> resultList = sqlSession.selectList("readAll");
-//	System.out.println("Selected results of SQL");
 	sqlSession.close();
 	session.setAttribute("results", resultList);
-	/* for(BoardVO result : resultList){
+	/* -- simple test...
+	for(BoardVO result : resultList){
 		System.out.println("Author == "+result.getWriter() +", "+ "content == " + result.getContent());
-	} */
+	} 
+	*/
 %>
 	<table class="table table-striped table-bordered table-hover">
 		<caption>
