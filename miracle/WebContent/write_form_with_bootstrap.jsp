@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				<th>작성자 : </th>
-				<td><input type="text" name="name" placeholder="이름을 입력하세요. " class="form-control"></td>
+				<td><input type="text" name="writer" placeholder="이름을 입력하세요. " class="form-control"></td>
 			</tr>
 			<tr>
 				<th>내용 : </th>
