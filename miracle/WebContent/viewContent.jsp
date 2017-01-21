@@ -30,6 +30,7 @@
 	BoardVO resultVo = sqlSession.selectOne("readOne", seq);
 	session.setAttribute("content", resultVo.getContent());
 	session.setAttribute("subject", resultVo.getSubject());
+	session.setAttribute("writer", resultVo.getWriter());
 %>
 <div class="container">
 	<table class="table table-striped">
