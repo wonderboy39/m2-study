@@ -29,12 +29,13 @@
 	session.setAttribute("sequence", seq);
 	BoardVO resultVo = sqlSession.selectOne("readOne", seq);
 	session.setAttribute("content", resultVo.getContent());
+	session.setAttribute("subject", resultVo.getSubject());
 %>
 <div class="container">
 	<table class="table table-striped">
 		<thead>
 			<th colspan="2"> 
-			<p align="center">안녕하세요. 가입인사드립니다.</p>
+			<p align="center">${subject} </p>
 			</th>
 		</thead>
 		<tbody>
