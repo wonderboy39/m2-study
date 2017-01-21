@@ -15,4 +15,7 @@
   <select id="readAll" resultType="com.miracle.board.BoardVO">
   	SELECT * FROM MBOARD1 order by seq desc 
   </select>
+  <select id="readOne" parameterType="String" resultType="com.miracle.board.BoardVO">
+  	SELECT * FROM Mboard1 WHERE Seq=#{seq}
+  </select>
 </mapper>
