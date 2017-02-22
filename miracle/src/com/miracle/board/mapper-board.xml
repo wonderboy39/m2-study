@@ -18,4 +18,7 @@
   <select id="readOne" parameterType="String" resultType="com.miracle.board.BoardVO">
   	SELECT * FROM Mboard1 WHERE Seq=#{seq}
   </select>
+  <update id="updateContent" parameterType="com.miracle.board.BoardVO">
+  	UPDATE MBOARD1 set subject=#{subject}, writer=#{writer}, content=#{content}, filename=#{filename}, password=#{password} WHERE seq=#{seq}
+  </update>
 </mapper>

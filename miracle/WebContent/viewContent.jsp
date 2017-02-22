@@ -17,6 +17,12 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+ function go_modify(f){
+	 f.action = "modify.jsp";
+	 f.submit();
+ }
+</script>
 </head>
 <body>
 <%
@@ -26,38 +32,45 @@
 	SqlSession sqlSession = dbService.getFactory().openSession(true);
 	
 	String seq = request.getParameter("seq");
+	BoardVO resultVo = sqlSession.selectOne("readOne", seq);
+	session.setAttribute("bvo", resultVo);
+	/* 
 	session.setAttribute("sequence", seq);
 	BoardVO resultVo = sqlSession.selectOne("readOne", seq);
 	session.setAttribute("content", resultVo.getContent());
 	session.setAttribute("subject", resultVo.getSubject());
 	session.setAttribute("writer", resultVo.getWriter());
+	session.setAttribute("bvo", resultVo); 
+	*/
 %>
 <div class="container">
+<form method="post">
 	<table class="table table-striped">
 		<thead>
 			<th colspan="2"> 
-			<p align="center">${subject} </p>
+			<p align="center">${bvo.subject} </p>
 			</th>
 		</thead>
 		<tbody>
 			<tr>
-				<td> 작성자 : ${writer} </td>
-				<td> 글 번호 : ${sequence} </td>
+				<td> 작성자 : ${bvo.writer} </td>
+				<td> 글 번호 : ${bvo.seq} </td>
 			</tr>
 			<tr>
 				<td colspan="2"> 
-					<p>${content} </p>
+					<p>${bvo.content} </p>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
 					<button class="pull-left">목록</button>
 					<button class="pull-right">삭제</button>
-					<button class="pull-right">수정</button>
+					<button class="pull-right" onclick="go_modify(this.form)">수정</button>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+</form>
 </div>
 </body>
 </html>
