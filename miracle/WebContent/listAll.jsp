@@ -28,12 +28,7 @@
 	SqlSession sqlSession = dbService.getFactory().openSession(true);
 	List<BoardVO> resultList = sqlSession.selectList("readAll");
 	sqlSession.close();
-	session.setAttribute("results", resultList);
-	/* -- simple test...
-	for(BoardVO result : resultList){
-		System.out.println("Author == "+result.getWriter() +", "+ "content == " + result.getContent());
-	} 
-	*/
+	pageContext.setAttribute("results", resultList);
 %>
 	<table class="table table-striped table-bordered table-hover">
 		<caption>

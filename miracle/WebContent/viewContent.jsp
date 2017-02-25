@@ -34,14 +34,6 @@
 	String seq = request.getParameter("seq");
 	BoardVO resultVo = sqlSession.selectOne("readOne", seq);
 	session.setAttribute("bvo", resultVo);
-	/* 
-	session.setAttribute("sequence", seq);
-	BoardVO resultVo = sqlSession.selectOne("readOne", seq);
-	session.setAttribute("content", resultVo.getContent());
-	session.setAttribute("subject", resultVo.getSubject());
-	session.setAttribute("writer", resultVo.getWriter());
-	session.setAttribute("bvo", resultVo); 
-	*/
 %>
 <div class="container">
 <form method="post">
