@@ -22,6 +22,10 @@
 	 f.action = "modify.jsp";
 	 f.submit();
  }
+ function go_delete(f){
+	 f.action = "delete.jsp";
+	 f.submit();
+ }
 </script>
 </head>
 <body>
@@ -56,7 +60,7 @@
 			<tr>
 				<td colspan="3">
 					<button class="pull-left">목록</button>
-					<button class="pull-right">삭제</button>
+					<button class="pull-right" onclick="go_delete(this.form)">삭제</button>
 					<button class="pull-right" onclick="go_modify(this.form)">수정</button>
 				</td>
 			</tr>

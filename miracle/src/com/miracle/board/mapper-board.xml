@@ -21,4 +21,7 @@
   <update id="updateContent" parameterType="com.miracle.board.BoardVO">
   	UPDATE MBOARD1 set subject=#{subject}, writer=#{writer}, content=#{content}, filename=#{filename}, password=#{password} WHERE seq=#{seq}
   </update>
+  <delete id="deleteOne" parameterType="com.miracle.board.BoardVO">
+  	DELETE from MBOARD1 where seq=#{seq} and password=#{password}
+  </delete>
 </mapper>
