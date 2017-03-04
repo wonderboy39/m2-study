@@ -16,10 +16,13 @@
   	SELECT * FROM MBOARD1 order by seq desc 
   </select>
   <select id="readOne" parameterType="String" resultType="com.miracle.board.BoardVO">
-  	SELECT * FROM Mboard1 WHERE Seq=#{seq}
+  	SELECT * FROM Mboard1 WHERE seq=#{seq}
   </select>
   <select id="readPartial" parameterType="java.util.Map" resultType="com.miracle.board.BoardVO">
-  	SELECT * FROM mboard1 ORDER BY ASC LIMIT #{begin} OFFSET #{end}
+  	SELECT * FROM mboard1 ORDER BY seq LIMIT #{end} OFFSET #{begin}
+  </select>
+  <select id="pageCnt" resultType="int">
+  	SELECT count(*) FROM mboard1
   </select>
   <update id="updateContent" parameterType="com.miracle.board.BoardVO">
   	UPDATE MBOARD1 set subject=#{subject}, writer=#{writer}, content=#{content}, filename=#{filename}, password=#{password} WHERE seq=#{seq}
