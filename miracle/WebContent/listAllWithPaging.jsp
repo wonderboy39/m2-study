@@ -33,32 +33,33 @@
 	final int CONTENTS_PER_PAGES = 4;
 	final int NUM_PAGES = pageCnt/CONTENTS_PER_PAGES + 1;
 	
-	int nCurrPage = 0;
+	int iPageNum = 0;
 	int begin = 0;
 	session.setAttribute("num_pages", NUM_PAGES);
 	
-	//int end = begin + CONTENTS_PER_PAGES;
 	List<BoardVO> contents = null;
 	Map<String, Integer> areaMap = new HashMap<String, Integer>();
 	//Map areaMap = new HashMap();
 	
-	String strCurrPage = request.getParameter("currPage");
-	if(strCurrPage !=null){
-		nCurrPage = Integer.parseInt(strCurrPage);
+	String strPageNum = request.getParameter("pageNum");
+	if(strPageNum !=null){
+		iPageNum = Integer.parseInt(strPageNum);
+		session.setAttribute("pageNo", iPageNum);
+	}
+	else{
+		session.setAttribute("pageNo", 1);
 	}
 	
-	if(nCurrPage>0){
-		
+	if(iPageNum>0){
+		areaMap.put("begin", (iPageNum-1)*CONTENTS_PER_PAGES);
+		areaMap.put("end", CONTENTS_PER_PAGES);
+		contents = sqlSession.selectList("readPartial", areaMap);
+		session.setAttribute("contents", contents);
 	}
 	else{ //nCurrPage == 0
 		areaMap.put("begin", begin);
 		areaMap.put("end", CONTENTS_PER_PAGES);
 		contents = sqlSession.selectList("readPartial", areaMap);
-		for(BoardVO bvo : contents){
-			System.out.println("writer : " + bvo.getWriter());
-			System.out.println("contents : " + bvo.getContent());
-			System.out.println("seq : " + bvo.getSeq());
-		}
 		session.setAttribute("contents", contents);
 	}
 	
@@ -85,14 +86,14 @@
 				<c:forEach items="${contents}" var="k">
 					<tr>
 						<td>${k.seq}</td>
-						<td><a href="viewContent.jsp?seq=${k.seq}">${k.content}</a></td>
+						<td><a href="viewContent.jsp?seq=${k.seq}">${k.subject}</a></td>
 						<td>${k.writer}</td>
 					</tr>
 				</c:forEach>
 			</c:if>
 			<tr>
-				<td colspan="3">
-					<nav aria-label="Page navigation" align="center">
+				<td colspan="3" align="center">
+					<nav aria-label="Page navigation">
 						<ul class="pagination">
 							<li>
 								<a href="#" aria-label="Previous">
@@ -100,9 +101,18 @@
 								</a>
 							</li>
 							<c:forEach var="i" begin="1" end="${num_pages}" step="1">
-								<li>
-									<a href="#">${i}</a>
-								</li>
+								<c:choose>
+									<c:when test="${i eq pageNo}">
+										<li class="active">
+											<a href="listAllWithPaging.jsp?pageNum=${i}">${i}<span class="sr-only">(current)</span></a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="listAllWithPaging.jsp?pageNum=${i}">${i}</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 							<li>
 								<a href="#" aria-label="Next">
